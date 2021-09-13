@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import About from "./components/menu/about";
 import Home from "./components/menu/home";
+import Project from "./components/menu/projects";
 import Resume from "./components/menu/resume";
 import Skills from "./components/menu/skills";
 
@@ -13,6 +14,7 @@ function App() {
           <About />
           <Resume />
           <Skills />
+          <Projects />
         </div>
       </div>
     </StyledWrapper>

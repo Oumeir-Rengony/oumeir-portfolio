@@ -15,3 +15,7 @@ export const getResume = () => {
 export const getSkills = () => {
   return data[0].skills;
 };
+
+export const getProjects = () => {
+  return data[0].projects;
+};
