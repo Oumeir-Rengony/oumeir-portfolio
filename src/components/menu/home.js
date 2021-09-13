@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { getHomeData } from "../data";
+import { getHomeData } from "../../data";
 
 
 const Home = () => {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import About from "./components/about";
-import Home from "./components/home";
-import Resume from "./components/resume";
+import About from "./components/menu/about";
+import Home from "./components/menu/home";
+import Resume from "./components/menu/resume";
 
 function App() {
   return (

@@ -1,55 +1,37 @@
 import styled from "styled-components";
-import { getAboutData } from "../data";
+import { getAboutData } from "../../data";
+import SectionHeader from "./sectionHeader/sectionHeader";
+import MenuContainer from "./container/menuContainer";
 
 const About = () => {
   const { title, intro, bio } = getAboutData();
 
   return (
-    <StyledWrapper>
-      <h3 className="title">{title}</h3>
-      <p className="small-bio">
-        <strong>{intro.title}</strong>
-        <br />
-        <span>{intro.paragraph}</span>
-      </p>
+    <MenuContainer>
+      <StyledWrapper>
+        <SectionHeader title={title} />
+        <p className="small-bio">
+          <strong>{intro.title}</strong>
+          <br />
+          <span>{intro.paragraph}</span>
+        </p>
 
-      <div className="info-list">
-        <ul>
-          {bio.map(({ attribute, value }) => (
-            <li key={attribute}>
-              <span className="attribute">{attribute}:</span>
-              <span className="me">{value}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </StyledWrapper>
+        <div className="info-list">
+          <ul>
+            {bio.map(({ attribute, value }) => (
+              <li key={attribute}>
+                <span className="attribute">{attribute}:</span>
+                <span className="me">{value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </StyledWrapper>
+    </MenuContainer>
   );
 };
 
 const StyledWrapper = styled.section`
-  padding: 30px 30px 0;
-
-  .title {
-    position: relative;
-    padding-bottom: 30px;
-    text-transform: capitalize;
-
-    &:after {
-      content: "";
-      position: absolute;
-      left: -30px;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: radial-gradient(
-        ellipse at left,
-        #ddd 0%,
-        rgba(255, 255, 255, 0) 70%
-      );
-    }
-  }
-
   .small-bio {
     padding-top: 30px;
     color: #646464;
