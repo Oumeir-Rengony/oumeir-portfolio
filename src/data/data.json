@@ -84,6 +84,51 @@
           ]
         }
       ]
+    },
+    "skills": {
+      "title": "skills",
+      "items": [
+        {
+          "title": "Html5",
+          "image": "/images/skills/html.svg"
+        },
+        {
+          "title": "Css3",
+          "image": "/images/skills/css.svg"
+        },
+        {
+          "title": "Javascript",
+          "image": "/images/skills/javascript.svg"
+        },
+        {
+          "title": "Jquery",
+          "image": "/images/skills/jquery.svg"
+        },
+        {
+          "title": "Git",
+          "image": "/images/skills/git.svg"
+        },
+        {
+          "title": "React",
+          "image": "/images/skills/react.svg"
+        },
+        {
+          "title": "Typescript",
+          "image": "/images/skills/typescript.svg"
+        },
+        {
+          "title": "NextJs",
+          "image": "/images/skills/next-js.png"
+        },
+        {
+          "title": "Css in Js",
+          "image": "/images/skills/styled.png"
+        },
+        {
+          "title": "AZ-900",
+          "image": "/images/skills/az-900.svg"
+        }
+      ]
     }
   }
 ]

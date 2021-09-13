@@ -11,3 +11,7 @@ export const getAboutData = () => {
 export const getResume = () => {
   return data[0].resume;
 };
+
+export const getSkills = () => {
+  return data[0].skills;
+};

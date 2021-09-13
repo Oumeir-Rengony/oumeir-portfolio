@@ -2,6 +2,7 @@ import styled from "styled-components";
 import About from "./components/menu/about";
 import Home from "./components/menu/home";
 import Resume from "./components/menu/resume";
+import Skills from "./components/menu/skills";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <div className="portfolio-section">
           <About />
           <Resume />
+          <Skills />
         </div>
       </div>
     </StyledWrapper>
