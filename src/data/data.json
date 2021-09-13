@@ -154,6 +154,14 @@
           "paragraph": "Ex audire suavitate has, ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. Enim torquatos…"
         }
       ]
+    },
+    "contact": {
+      "title": "contact",
+      "intro": {
+        "title": "I'd love to hear from you",
+        "paragraph": "We're open for any suggestion or just to have a chat We're open for any suggestion or just to have a chat."
+      },
+      "input": ["Name", "Email", "Message"]
     }
   }
 ]

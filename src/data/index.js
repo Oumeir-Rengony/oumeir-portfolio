@@ -19,3 +19,7 @@ export const getSkills = () => {
 export const getProjects = () => {
   return data[0].projects;
 };
+
+export const getContact = () => {
+  return data[0].contact;
+};

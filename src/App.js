@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import About from "./components/menu/about";
+import Contact from "./components/menu/contact";
 import Home from "./components/menu/home";
 import Projects from "./components/menu/projects";
 import Resume from "./components/menu/resume";
@@ -15,6 +16,7 @@ function App() {
           <Resume />
           <Skills />
           <Projects />
+          <Contact />
         </div>
       </div>
     </StyledWrapper>
