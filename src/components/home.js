@@ -40,10 +40,8 @@ const Home = () => {
 
 const StyledWrapper = styled.section`
   position: fixed;
-  z-index: -1;
   width: 100%;
   height: 100%;
-  background: #96aeca;
 
   .profile {
     position: relative;

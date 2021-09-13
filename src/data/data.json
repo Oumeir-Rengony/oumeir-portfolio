@@ -9,6 +9,39 @@
       "banner": "https://bslthemes.site/ryancv/wp-content/uploads/2020/04/man5_big.jpg",
       "designation": "Web Developer",
       "quote": "A Front-End Web Developer passionate about creating interactive applications and experiences on the web"
+    },
+    "about": {
+      "title": "about",
+      "intro": {
+        "title": "Hello! I’m Oumeir Rengony.",
+        "paragraph": " Web designer from USA, California. I have rich experience in web site design and building, also I am good at wordpress. I love to talk with you about our unique."
+      },
+      "bio": [
+        {
+          "attribute": "First Name",
+          "value": "Mohammad Oumeir"
+        },
+        {
+          "attribute": "Last Name",
+          "value": "Rengony"
+        },
+        {
+          "attribute": "Age",
+          "value": 24
+        },
+        {
+          "attribute": "Address",
+          "value": "Triolet"
+        },
+        {
+          "attribute": "Phone",
+          "value": 58287344
+        },
+        {
+          "attribute": "Email",
+          "value": "rengonyoumeir@gmail.com"
+        }
+      ]
     }
   }
 ]
