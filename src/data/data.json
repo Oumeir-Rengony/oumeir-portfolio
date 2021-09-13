@@ -42,6 +42,48 @@
           "value": "rengonyoumeir@gmail.com"
         }
       ]
+    },
+    "resume": {
+      "title": "resume",
+      "items": [
+        {
+          "title": "Education",
+          "icon": "fa fa-briefcase fa-2x",
+          "timeline": [
+            {
+              "name": "Adolphe De Plevitz",
+              "year": "2009 -2009",
+              "position": "School Certificate"
+            },
+            {
+              "name": "Adolphe De Plevitz",
+              "year": "2007 -2009",
+              "position": "HIgher School Certificate"
+            },
+            {
+              "name": "University of Mauritius",
+              "year": "2007 -2009",
+              "position": "Software Engineering"
+            }
+          ]
+        },
+        {
+          "title": "Experience",
+          "icon": "fa fa-book fa-2x",
+          "timeline": [
+            {
+              "name": "Accenture",
+              "year": "2009 -2009",
+              "position": "Associate Developer"
+            },
+            {
+              "name": "Proximity",
+              "year": "2007 -present",
+              "position": "Developer"
+            }
+          ]
+        }
+      ]
     }
   }
 ]

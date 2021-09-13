@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import About from "./components/about";
 import Home from "./components/home";
+import Resume from "./components/resume";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Home />
         <div className="portfolio-section">
           <About />
+          <Resume />
         </div>
       </div>
     </StyledWrapper>

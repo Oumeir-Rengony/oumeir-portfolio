@@ -7,3 +7,7 @@ export const getHomeData = () => {
 export const getAboutData = () => {
   return data[0].about;
 };
+
+export const getResume = () => {
+  return data[0].resume;
+};
