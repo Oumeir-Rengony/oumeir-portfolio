@@ -71,7 +71,7 @@ const StyledWrapper = styled.section`
 
         .timeline__item {
           border-left: 1px solid rgba(48, 76, 253, 0.5) !important;
-          padding-bottom: 9px;
+          padding-bottom: 18px;
           padding-left: 22px;
           position: relative;
 

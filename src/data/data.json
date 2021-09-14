@@ -1,5 +1,24 @@
 [
   {
+    "menu": {
+      "title": "menu",
+      "items": [
+        { "title": "home", "url": "#home", "icon": "ion-home" },
+        { "title": "about", "url": "#about", "icon": "ion-ios-personadd" },
+        { "title": "resume", "url": "#resume", "icon": "ion-ios-paper" },
+        { "title": "skills", "url": "#skills", "icon": "icon ion-flash" },
+        {
+          "title": "projects",
+          "url": "#projects",
+          "icon": "icon ion-paintbrush"
+        },
+        {
+          "title": "contact",
+          "url": "#contact",
+          "icon": "ion-android-mail"
+        }
+      ]
+    },
     "home": {
       "title": "home",
       "name": {
@@ -14,7 +33,7 @@
       "title": "about",
       "intro": {
         "title": "Hello! I’m Oumeir Rengony.",
-        "paragraph": " Web designer from USA, California. I have rich experience in web site design and building, also I am good at wordpress. I love to talk with you about our unique."
+        "paragraph": "A passionate and Adventurous web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and JavaScript. I’m curious, and I enjoy work that challenges me to learn something new and stretch in a different direction."
       },
       "bio": [
         {
@@ -52,17 +71,17 @@
           "timeline": [
             {
               "name": "Adolphe De Plevitz",
-              "year": "2009 -2009",
+              "year": "2013 -2015",
               "position": "School Certificate"
             },
             {
               "name": "Adolphe De Plevitz",
-              "year": "2007 -2009",
-              "position": "HIgher School Certificate"
+              "year": "2015 -2017",
+              "position": "Higher School Certificate"
             },
             {
               "name": "University of Mauritius",
-              "year": "2007 -2009",
+              "year": "2017 -2020",
               "position": "Software Engineering"
             }
           ]
@@ -73,12 +92,12 @@
           "timeline": [
             {
               "name": "Accenture",
-              "year": "2009 -2009",
-              "position": "Associate Developer"
+              "year": "2019",
+              "position": "Associate Developer (Internship)"
             },
             {
               "name": "Proximity",
-              "year": "2007 -present",
+              "year": "2020 - Present",
               "position": "Developer"
             }
           ]
@@ -132,26 +151,30 @@
     },
     "projects": {
       "title": "projects",
-      "items": [
-        {
-          "title": "Tic Tac Toe",
-          "image": "/images/projects/tictactoe.png",
-          "paragraph": "Ex audire suavitate has, ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. Enim torquatos…"
-        },
+      "items": [  
         {
           "title": "Crown Clothing",
+          "website": "https://crwn-clothing-prod-build.herokuapp.com/",
           "image": "/images/projects/crwn.svg",
-          "paragraph": "Ex audire suavitate has, ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. Enim torquatos…"
-        },
-        {
-          "title": "Chargepoint",
-          "image": "/images/projects/chargepoint.jpg",
-          "paragraph": "Ex audire suavitate has, ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. Enim torquatos…"
+          "paragraph": "A simple ecommerce website using React Redux for state management and stripe for payment."
         },
         {
           "title": "TodoApp",
+          "website": "https://typescript-todoapp.herokuapp.com/",
           "image": "/images/projects/note.jpg",
-          "paragraph": "Ex audire suavitate has, ei quodsi tacimates sapientem sed, pri zril ubique ut. Te cule tation munere noluisse. Enim torquatos…"
+          "paragraph": "An elegant note taking app to demonstrate the ability of typescript. Styled-components was used for styling."
+        },
+        {
+          "title": "Chargepoint",
+          "website": "https://chargepoint-nextjs-contentful.vercel.app/",
+          "image": "/images/projects/chargepoint.jpg",
+          "paragraph": "A statically generated website about electric charger using Next.js and contentful for content management."
+        },
+        {
+          "title": "Tic Tac Toe",
+          "website": "https://react-tictactoe-ui.herokuapp.com/",
+          "image": "/images/projects/tictactoe.png",
+          "paragraph": "A dual multiplyer tic-tac-toe game built using React and Socket.io, an advanced web socket api."
         }
       ]
     },
@@ -159,9 +182,10 @@
       "title": "contact",
       "intro": {
         "title": "I'd love to hear from you",
-        "paragraph": "We're open for any suggestion or just to have a chat We're open for any suggestion or just to have a chat."
+        "paragraph": "I'm open for any suggestion or just to have a chat. Please leave a lovely message for me."
       },
       "input": ["Name", "Email", "Message"]
     }
   }
 ]
+

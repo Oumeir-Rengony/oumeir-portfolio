@@ -59,6 +59,14 @@ const StyledWrapper = styled.section`
   .contact {
     padding-bottom: 30px;
 
+    @media (min-width: 681px) {
+      padding-bottom: 0;
+    }
+
+    @media (min-width:1121px){
+      padding: 30px 22px;
+    }
+
     .small-bio {
       padding-top: 30px;
       color: #646464;
@@ -67,6 +75,10 @@ const StyledWrapper = styled.section`
     .contact-form {
       padding-top: 15px;
       text-align: center;
+
+      @media (min-width: 1121px) {
+        padding-top: 10px;
+      }
 
       .contact-input {
         width: 100%;
@@ -78,12 +90,20 @@ const StyledWrapper = styled.section`
         outline: 0;
         border-radius: 12px;
         margin-bottom: 15px;
+
+        @media (min-width: 1121px) {
+          margin-bottom: 10px;
+        }
       }
 
       .message {
         height: 160px;
         resize: none;
         padding-top: 10px;
+
+        @media (min-width: 1440px) {
+          height: 140px;
+        }
       }
 
       .send {

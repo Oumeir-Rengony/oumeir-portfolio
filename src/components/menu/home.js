@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { getHomeData } from "../../data";
 
-
 const Home = () => {
   const { name, banner, designation } = getHomeData();
 
@@ -43,6 +42,21 @@ const StyledWrapper = styled.section`
   width: 100%;
   height: 100%;
 
+  @media (min-width: 681px) {
+    height: 98%;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  @media (min-width: 1121px) {
+    width: 480px;
+    border-radius: 6px;
+    margin-bottom: 0;
+    z-index: 2;
+    box-shadow: rgb(0 0 0 / 40%) 2px 2px 3px;
+  }
+
   .profile {
     position: relative;
     width: 100%;
@@ -52,6 +66,13 @@ const StyledWrapper = styled.section`
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      @media (min-width: 681px) {
+        border-radius: 10px;
+      }
+      @media (min-width: 1121px) {
+        border-radius: 6px;
+      }
     }
 
     .triangle {
@@ -72,7 +93,7 @@ const StyledWrapper = styled.section`
     height: 37%;
     text-align: center;
     padding-top: 25px;
-    overflow:hidden;
+    overflow: hidden;
     background: linear-gradient(
       rgba(147, 82, 254, 1) 0%,
       rgba(182, 41, 254, 1) 50%,
@@ -80,6 +101,13 @@ const StyledWrapper = styled.section`
     );
     color: #fff;
 
+    @media (min-width: 681px) {
+      border-radius: 0 0 10px 10px;
+    }
+
+    @media (min-width: 1121px) {
+      border-radius: 0 0 6px 6px;
+    }
 
     .user-name {
       font-weight: 400;
@@ -91,6 +119,11 @@ const StyledWrapper = styled.section`
       color: #78cc6d;
       font-size: 18px;
       font-weight: 500;
+
+      @media (min-width: 1121px) {
+        padding-top: 17px;
+      }
+
     }
   }
 `;

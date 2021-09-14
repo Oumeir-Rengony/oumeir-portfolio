@@ -3,11 +3,11 @@ import { getAboutData } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 
-const About = () => {
+const About = ({activeMenuItem}) => {
   const { title, intro, bio } = getAboutData();
 
   return (
-    <MenuContainer>
+    <MenuContainer activeMenuItem={activeMenuItem}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <p className="small-bio">
@@ -35,6 +35,10 @@ const StyledWrapper = styled.section`
   .small-bio {
     padding-top: 30px;
     color: #646464;
+
+    @media(min-width: 1373px) {
+      padding: 30px 18px 0;
+    }
   }
 
   .info-list {
