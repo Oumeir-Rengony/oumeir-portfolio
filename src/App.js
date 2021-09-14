@@ -6,6 +6,7 @@ import Home from "./components/menu/home";
 import Projects from "./components/menu/projects";
 import Resume from "./components/menu/resume";
 import Skills from "./components/menu/skills";
+import Navbar from "./components/navbar/navbar"
 
 function App() {
   const [activeMenuItem, setActiveMenuItem] = useState({
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <StyledWrapper>
+      <Navbar activeMenuItem={activeMenuItem} setActiveMenuItem={setActiveMenuItem} />
       <div className="portfolio">
         <Home />
         <div className="portfolio-section">

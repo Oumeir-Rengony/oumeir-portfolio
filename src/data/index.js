@@ -1,5 +1,9 @@
 import data from "./data.json";
 
+export const getMenu = () => {
+  return data[0].menu;
+};
+
 export const getHomeData = () => {
   return data[0].home;
 };
