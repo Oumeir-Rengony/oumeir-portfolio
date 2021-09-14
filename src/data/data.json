@@ -26,7 +26,12 @@
         "lastname": "Rengony"
       },
       "banner": "https://bslthemes.site/ryancv/wp-content/uploads/2020/04/man5_big.jpg",
-      "designation": "Web Developer",
+      "designation": [
+        "Web Developer",
+        "React Developer",
+        "Blogger",
+        "Freelancer"
+      ],
       "quote": "A Front-End Web Developer passionate about creating interactive applications and experiences on the web"
     },
     "about": {

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { getHomeData } from "../../data";
+import TypingEffect from "../animation/typing";
+import WaveAnimation from "../animation/wave";
 
 const Home = () => {
   const { name, banner, designation } = getHomeData();
@@ -30,17 +32,21 @@ const Home = () => {
           <p className="lname">{name.lastname}</p>
         </div>
         <div className="designation">
-          <span className="designation-text">{designation}</span>
+          <TypingEffect designation={designation} />
         </div>
       </div>
+
+      <WaveAnimation />
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.section`
   position: fixed;
+  z-index: -1;
   width: 100%;
   height: 100%;
+  background: #96aeca;
 
   @media (min-width: 681px) {
     height: 98%;
@@ -115,15 +121,16 @@ const StyledWrapper = styled.section`
     }
 
     .designation {
-      padding-top: 25px;
+      padding-top: 16px;
       color: #78cc6d;
       font-size: 18px;
       font-weight: 500;
+      height: 100px;
+      overflow: hidden;
 
       @media (min-width: 1121px) {
         padding-top: 17px;
       }
-
     }
   }
 `;
