@@ -1,30 +1,25 @@
-import { useState } from "react";
 import styled from "styled-components";
-import About from "./components/menu/about";
-import Contact from "./components/menu/contact";
-import Home from "./components/menu/home";
-import Projects from "./components/menu/projects";
-import Resume from "./components/menu/resume";
 import Skills from "./components/menu/skills";
-import Navbar from "./components/navbar/navbar"
+import About from "./components/menu/about";
+import Home from "./components/menu/home";
+import Resume from "./components/menu/resume";
+import Projects from "./components/menu/projects";
+import Contact from "./components/menu/contact";
+import Navbar from "./components/navbar/navbar";
+import { useContext } from "react";
+import { NavbarContext } from "./context/navbar/navbar.provider";
 
 function App() {
-  const [activeMenuItem, setActiveMenuItem] = useState({
-    about: true,
-    home: false,
-    resume: false,
-    projects: false,
-    skills: false,
-    contact: false,
-  });
+
+  const { portfolioDivRef } = useContext(NavbarContext);
 
   return (
     <StyledWrapper>
-      <Navbar activeMenuItem={activeMenuItem} setActiveMenuItem={setActiveMenuItem} />
-      <div className="portfolio">
+      <Navbar />
+      <div className="portfolio" ref={portfolioDivRef}>
         <Home />
         <div className="portfolio-section">
-          <About activeMenuItem={activeMenuItem.about} />
+          <About />
           <Resume />
           <Skills />
           <Projects />

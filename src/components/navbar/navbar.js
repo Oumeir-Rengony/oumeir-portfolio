@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import { getMenu } from "../../data";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
 import NavLink from "./navlink";
 
-const Navbar = ({ activeMenuItem, setActiveMenuItem }) => {
-  const [navbarActive, setNavbarActive] = useState(false);
+const Navbar = () => {
 
-  const menu = getMenu();
+  const { menu, navbarActive, setNavbarActive } = useContext(NavbarContext);
 
   return (
     <StyledWrapper>
@@ -25,9 +24,6 @@ const Navbar = ({ activeMenuItem, setActiveMenuItem }) => {
               url={url}
               icon={icon}
               index={index}
-              setNavbarActive={setNavbarActive}
-              activeMenuItem={activeMenuItem}
-              setActiveMenuItem={setActiveMenuItem}
             />
           ))}
         </ul>

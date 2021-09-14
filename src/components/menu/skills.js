@@ -2,11 +2,16 @@ import styled from "styled-components";
 import { getSkills } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { useContext } from "react";
 
 const Skills = () => {
   const { title, items } = getSkills();
+
+  const {activeMenuItem} = useContext(NavbarContext);
+
   return (
-    <MenuContainer>
+    <MenuContainer target={title} activeMenuItem={activeMenuItem.skills}>
       <StyledWrapper>
         <SectionHeader title={title} alt="logo" />
         <div className="skills">

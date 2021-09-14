@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { getContact } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
 
-const Contact = ({ DisplayTabforDesktop }) => {
+const Contact = () => {
   const { title, intro, input } = getContact();
 
   const [inputState, setInputState] = useState(null);
 
+  const {activeMenuItem} = useContext(NavbarContext);
+
   return (
-    <MenuContainer target={title} DisplayTabforDesktop={DisplayTabforDesktop}>
+    <MenuContainer target={title} activeMenuItem={activeMenuItem.contact}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="contact">

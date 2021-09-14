@@ -1,29 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext} from "react";
 import styled from "styled-components";
+import { ScreenContext } from "../../context/screen/screen.provider";
 import { getHomeData } from "../../data";
-import TypingEffect from "../animation/typing";
+import Typing from "../animation/typing";
 import WaveAnimation from "../animation/wave";
 
 const Home = () => {
   const { name, banner, designation } = getHomeData();
 
-  const [profileWidth, setProfileWidth] = useState(0);
-
-  const profileRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setProfileWidth(profileRef.current.clientWidth);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const {homeBannerRef, homeBannerWidth} = useContext(ScreenContext);
 
   return (
-    <StyledWrapper profileWidth={profileWidth}>
-      <div className="profile" ref={profileRef}>
-        <img src={banner} alt="profile" />
+    <StyledWrapper homeBannerWidth={homeBannerWidth}>
+      <div className="profile" ref={homeBannerRef}>
+        <img id="hero-banner" src={banner} alt="profile" />
         <div className="triangle" />
       </div>
       <div className="user-info">
@@ -32,7 +22,7 @@ const Home = () => {
           <p className="lname">{name.lastname}</p>
         </div>
         <div className="designation">
-          <TypingEffect designation={designation} />
+          <Typing designation={designation} />
         </div>
       </div>
 
@@ -87,9 +77,9 @@ const StyledWrapper = styled.section`
       left: 0;
       width: 100%;
       height: 0;
-      border-left: ${(props) => `${props.profileWidth / 2}px`} solid #9452fe;
-      border-right: ${(props) => `${props.profileWidth / 2}px`} solid #9452fe;
-      border-top: ${(props) => `${props.profileWidth / 6}px`} solid transparent;
+      border-left: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
+      border-right: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
+      border-top: ${(props) => `${props.homeBannerWidth / 6}px`} solid transparent;
       border-bottom: 0;
     }
   }
@@ -99,7 +89,7 @@ const StyledWrapper = styled.section`
     height: 37%;
     text-align: center;
     padding-top: 25px;
-    overflow: hidden;
+    overflow:hidden;
     background: linear-gradient(
       rgba(147, 82, 254, 1) 0%,
       rgba(182, 41, 254, 1) 50%,
@@ -125,8 +115,8 @@ const StyledWrapper = styled.section`
       color: #78cc6d;
       font-size: 18px;
       font-weight: 500;
-      height: 100px;
-      overflow: hidden;
+      height:100px;
+      overflow:hidden;
 
       @media (min-width: 1121px) {
         padding-top: 17px;

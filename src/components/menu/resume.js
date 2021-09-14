@@ -2,12 +2,16 @@ import styled from "styled-components";
 import { getResume } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { useContext } from "react";
 
 const Resume = () => {
   const { title, items } = getResume();
 
+  const {activeMenuItem} = useContext(NavbarContext);
+  
   return (
-    <MenuContainer>
+    <MenuContainer target={title} activeMenuItem={activeMenuItem.resume}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="resume-container">

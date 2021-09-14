@@ -167,7 +167,7 @@
           "title": "TodoApp",
           "website": "https://typescript-todoapp.herokuapp.com/",
           "image": "/images/projects/note.jpg",
-          "paragraph": "An elegant note taking app to demonstrate the ability of typescript. Styled-components was used for styling."
+          "paragraph": "An elegant note taking app to showcase how typescript makes development easier."
         },
         {
           "title": "Chargepoint",

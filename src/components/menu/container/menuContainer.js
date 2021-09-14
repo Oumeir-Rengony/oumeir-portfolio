@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
-const MenuContainer = ({ activeMenuItem, children }) => {
-  return <StyledWrapper activeMenuItem={activeMenuItem}>{children}</StyledWrapper>;
+
+const MenuContainer = ({ target, activeMenuItem, children }) => {
+  return (
+    <StyledWrapper id={target} activeMenuItem={activeMenuItem}>
+      {children}
+    </StyledWrapper>
+  );
 };
 
 const StyledWrapper = styled.section`

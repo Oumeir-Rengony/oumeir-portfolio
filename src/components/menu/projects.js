@@ -2,16 +2,20 @@ import styled from "styled-components";
 import { getProjects } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
+import { useContext } from "react";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
 
 const Project = () => {
   const { title, items } = getProjects();
 
+  const {activeMenuItem} = useContext(NavbarContext);
+
   const openWebsite = (website) => {
     window.open(website, "_blank");
   };
-
+  
   return (
-    <MenuContainer>
+    <MenuContainer target={title} activeMenuItem={activeMenuItem.projects}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <div className="projects">
@@ -61,10 +65,6 @@ const StyledWrapper = styled.section`
       justify-content: center;
       padding-bottom: 30px;
       cursor: pointer;
-
-      :nth-last-child(1) {
-        padding-bottom: 0px;
-      }
 
       @media (min-width: 500px) {
         max-width: 47%;

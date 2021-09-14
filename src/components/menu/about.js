@@ -2,12 +2,17 @@ import styled from "styled-components";
 import { getAboutData } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
+import { useContext } from "react";
+import { NavbarContext } from "../../context/navbar/navbar.provider";
 
-const About = ({activeMenuItem}) => {
+const About = () => {
+
   const { title, intro, bio } = getAboutData();
 
+  const { activeMenuItem } = useContext(NavbarContext);
+
   return (
-    <MenuContainer activeMenuItem={activeMenuItem}>
+    <MenuContainer target={title} activeMenuItem={activeMenuItem.about}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <p className="small-bio">
