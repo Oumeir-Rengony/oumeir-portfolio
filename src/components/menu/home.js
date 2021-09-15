@@ -1,9 +1,10 @@
 import { useContext} from "react";
 import styled from "styled-components";
+
+import {TypingEffect, WaveEffect} from "../Animation";
+
 import { ScreenContext } from "../../context/screen/screen.provider";
 import { getHomeData } from "../../data";
-import Typing from "../animation/typing";
-import WaveAnimation from "../animation/wave";
 
 const Home = () => {
   const { name, banner, designation } = getHomeData();
@@ -22,11 +23,11 @@ const Home = () => {
           <p className="lname">{name.lastname}</p>
         </div>
         <div className="designation">
-          <Typing designation={designation} />
+          <TypingEffect designation={designation} />
         </div>
       </div>
 
-      <WaveAnimation />
+      <WaveEffect />
     </StyledWrapper>
   );
 };

@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import { getProjects } from "../../data";
-import SectionHeader from "./sectionHeader/sectionHeader";
-import MenuContainer from "./container/menuContainer";
 import { useContext } from "react";
+import styled from "styled-components";
+
+import SectionHeader from "../../lib/Header/Header";
+import MenuContainer from "../../lib/Container/Container";
+
 import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { getProjects } from "../../data";
 
 const Project = () => {
   const { title, items } = getProjects();

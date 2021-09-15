@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import styled from "styled-components";
+
+import NavLink from "./Navlink";
+
 import { NavbarContext } from "../../context/navbar/navbar.provider";
-import NavLink from "./navlink";
+
 
 const Navbar = () => {
 

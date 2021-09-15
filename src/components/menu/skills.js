@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import { getSkills } from "../../data";
-import SectionHeader from "./sectionHeader/sectionHeader";
-import MenuContainer from "./container/menuContainer";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { useContext } from "react";
+import styled from "styled-components";
+
+import SectionHeader from "../../lib/Header/Header";
+import MenuContainer from "../../lib/Container/Container";
+
+import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { getSkills } from "../../data";
 
 const Skills = () => {
   const { title, items } = getSkills();

@@ -1,16 +1,20 @@
-import styled from "styled-components";
-import Skills from "./components/menu/skills";
-import About from "./components/menu/about";
-import Home from "./components/menu/home";
-import Resume from "./components/menu/resume";
-import Projects from "./components/menu/projects";
-import Contact from "./components/menu/contact";
-import Navbar from "./components/navbar/navbar";
 import { useContext } from "react";
+import styled from "styled-components";
+
+import {
+  Home,
+  About,
+  Resume,
+  Projects,
+  Skills,
+  Contact,
+} from "./components/Menu";
+
+import Navbar from "./components/Navbar";
+
 import { NavbarContext } from "./context/navbar/navbar.provider";
 
 function App() {
-
   const { portfolioDivRef } = useContext(NavbarContext);
 
   return (

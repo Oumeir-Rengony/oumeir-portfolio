@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const WaveAnimation = ({ reverse }) => {
+const WaveEffect = ({ reverse }) => {
   return (
     <Ocean reverse={reverse}>
       <div className="wave one"></div>
@@ -110,4 +110,4 @@ const Ocean = styled.div`
   }
 `;
 
-export default WaveAnimation;
+export default WaveEffect;

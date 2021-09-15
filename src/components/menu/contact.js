@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { getContact } from "../../data";
-import SectionHeader from "./sectionHeader/sectionHeader";
-import MenuContainer from "./container/menuContainer";
+
+import SectionHeader from "../../lib/Header/Header";
+import MenuContainer from "../../lib/Container/Container";
+
 import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { getContact } from "../../data";
+
 
 const Contact = () => {
   const { title, intro, input } = getContact();

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+
 import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { getUpdatedActiveMenuItemState } from "../../context/navbar/navbar.utils";
 
