@@ -1,43 +1,50 @@
 import styled from "styled-components";
-import { getProjects } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 import { useContext } from "react";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { useQuery } from "react-query";
+import { getProjectSection } from "../../GraphQl";
 
 const Project = () => {
-  const { title, items } = getProjects();
-
+  const { data, isLoading } = useQuery("project", getProjectSection);
+  
   const {activeMenuItem} = useContext(NavbarContext);
-
+  
   const openWebsite = (website) => {
     window.open(website, "_blank");
   };
   
+  if(isLoading){
+    return <></>;
+  }
+
+  const {title, projectItems} = data;
+
   return (
     <MenuContainer target={title} activeMenuItem={activeMenuItem.projects}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <div className="projects">
-          {items.map(({ title, website, image, paragraph }, index) => (
+          {projectItems.map(({ title, website, image, description }, index) => (
             <div
               className="project-item"
               key={index}
               onClick={() => openWebsite(website)}
             >
               <div className="logo-container">
-                <img src={process.env.PUBLIC_URL + image} alt="website logo" />
+                <img src={image.url} alt="website logo" />
               </div>
 
               <div className="text">
                 <strong className="title">{title}</strong>
                 <span>
                   <i
-                    class="ext-link-icon fa fa-external-link"
+                    className="ext-link-icon fa fa-external-link"
                     aria-hidden="true"
                   ></i>
                 </span>
-                <p>{paragraph}</p>
+                <p>{description}</p>
               </div>
             </div>
           ))}

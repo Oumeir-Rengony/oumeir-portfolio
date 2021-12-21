@@ -1,16 +1,23 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { getContact } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { getContactSection } from "../../GraphQl";
+import { useQuery } from "react-query";
 
 const Contact = () => {
-  const { title, intro, input } = getContact();
+  const { data, isLoading } = useQuery("contact", getContactSection);
 
   const [inputState, setInputState] = useState(null);
 
-  const {activeMenuItem} = useContext(NavbarContext);
+  const { activeMenuItem } = useContext(NavbarContext);
+
+  if (isLoading) {
+    return <></>;
+  }
+
+  const { title, header, message, inputArea } = data;
 
   return (
     <MenuContainer target={title} activeMenuItem={activeMenuItem.contact}>
@@ -18,13 +25,13 @@ const Contact = () => {
       <StyledWrapper>
         <div className="contact">
           <p className="small-bio">
-            <strong>{intro.title}</strong>
+            <strong>{header}</strong>
             <br />
-            {intro.paragraph}
+            {message}
           </p>
           <form className="contact-form">
-            {input.map((item, index) =>
-              index !== input.length - 1 ? (
+            {inputArea.map((item, index) =>
+              index !== inputArea.length - 1 ? (
                 <input
                   key={index}
                   type="text"
@@ -66,7 +73,7 @@ const StyledWrapper = styled.section`
       padding-bottom: 0;
     }
 
-    @media (min-width:1121px){
+    @media (min-width: 1121px) {
       padding: 30px 22px;
     }
 

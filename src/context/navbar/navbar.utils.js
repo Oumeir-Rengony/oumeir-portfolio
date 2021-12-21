@@ -1,22 +1,19 @@
 //Initial State for active menu
-export const getActiveMenuItemState = (data, initialActiveItem) => {
-    let activeMenuItemObject = {};
-  
-    data.items
-      //get title
+export const getActiveMenuItemState = (links, initialActiveItem) => {
+  let activeMenuItemObject = {};
+
+  if (links) {
+    links
       .map((item) => item.title)
-      //loop through each title &
-      //return {title: boolean}
-      .forEach((title, index) => {
-  
+      .forEach((title) => {
         activeMenuItemObject = {
           ...activeMenuItemObject,
           [title]: title === initialActiveItem ? true : false,
         };
-  
       });
-  
-    /*
+  }
+
+  /*
       activeMenuItem: {
         about: true;
         contact: false;
@@ -26,19 +23,18 @@ export const getActiveMenuItemState = (data, initialActiveItem) => {
         skills;
       }
     */
-    return activeMenuItemObject;
-  };
-  
-  //updated State for active menu
-  export const getUpdatedActiveMenuItemState = (prevState, currentTitle) => {
-    let state = {};
-  
-    //set active item to true & others false
-    for (const key in prevState) {
-      if (key === currentTitle) state = { ...state, [key]: true };
-      else state = { ...state, [key]: false };
-    }
-  
-    return state;
-  };
-  
+  return activeMenuItemObject;
+};
+
+//updated State for active menu
+export const getUpdatedActiveMenuItemState = (prevState, currentTitle) => {
+  let state = {};
+
+  //set active item to true & others false
+  for (const key in prevState) {
+    if (key === currentTitle) state = { ...state, [key]: true };
+    else state = { ...state, [key]: false };
+  }
+
+  return state;
+};

@@ -1,23 +1,30 @@
 import styled from "styled-components";
-import { getSkills } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { useContext } from "react";
+import { getSkillSection } from "../../GraphQl";
+import { useQuery } from "react-query";
 
 const Skills = () => {
-  const { title, items } = getSkills();
+  const { data, isLoading } = useQuery("skill", getSkillSection);
 
-  const {activeMenuItem} = useContext(NavbarContext);
+  const { activeMenuItem } = useContext(NavbarContext);
+
+  if (isLoading) {
+    return <></>;
+  }
+
+  const { title, skillItems } = data;
 
   return (
     <MenuContainer target={title} activeMenuItem={activeMenuItem.skills}>
       <StyledWrapper>
         <SectionHeader title={title} alt="logo" />
         <div className="skills">
-          {items.map(({ title, image }, index) => (
+          {skillItems.map(({ title, image }, index) => (
             <div className="logo-container" key={index}>
-              <BackgroundImg src={image} />
+              <BackgroundImg src={image.url} />
               <p>{title}</p>
             </div>
           ))}

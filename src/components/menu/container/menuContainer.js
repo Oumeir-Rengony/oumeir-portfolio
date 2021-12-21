@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const MenuContainer = ({ target, activeMenuItem, children }) => {
   return (
-    <StyledWrapper id={target} activeMenuItem={activeMenuItem}>
+    <StyledWrapper id={target.toLowerCase()} activeMenuItem={activeMenuItem}>
       {children}
     </StyledWrapper>
   );

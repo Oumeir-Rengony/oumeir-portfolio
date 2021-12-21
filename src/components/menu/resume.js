@@ -1,28 +1,38 @@
 import styled from "styled-components";
-import { getResume } from "../../data";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { useContext } from "react";
+import { useQuery } from "react-query";
+import { getResumeSection } from "../../GraphQl";
 
 const Resume = () => {
-  const { title, items } = getResume();
+  // const { title, items } = getResume();
 
+  const { data, isLoading } = useQuery("resume", getResumeSection);  
+  
   const {activeMenuItem} = useContext(NavbarContext);
+
+
+  if(isLoading){
+    return <></>;
+  }
+
+  const {title, resumeItems } = data;
   
   return (
     <MenuContainer target={title} activeMenuItem={activeMenuItem.resume}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="resume-container">
-          {items.map(({ icon, title, timeline }, index) => (
+          {resumeItems.map(({ iconClass, title, timelines }, index) => (
             <div className="resume" key={index}>
               <div className="resume-header">
-                <i className={icon} aria-hidden="true"></i>
+                <i className={iconClass} aria-hidden="true"></i>
                 <h2 className="header-title">{title}</h2>
               </div>
               <div className="timeline">
-                {timeline.map(({ name, year, position }, index) => (
+                {timelines.map(({ name, year, position }, index) => (
                   <article className="timeline__item" key={index}>
                     <h5 className="timeline__title">{name}</h5>
                     <span className="timeline__period">{year}</span>

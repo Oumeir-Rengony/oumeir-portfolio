@@ -1,28 +1,30 @@
 import React, {
-    createContext,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-  } from "react";
-  import { getMenu } from "../../data";
-  import { ScreenContext } from "../screen/screen.provider";
-  import { getActiveMenuItemState } from "./navbar.utils";
-  
-  export const NavbarContext = createContext({
-    menu: {},
-    portfolioDivRef: null,
-    navbarActive: false,
-    setNavbarActive: () => {},
-    activeMenuItem: {},
-    setActiveMenuItem: () => {},
-  });
-  
-  const NavbarProvider = ({ children }) => {
-    //content for navbar
-    const menu = getMenu();
-  
-    /* 
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useQuery } from "react-query";
+import { getMenu } from "../../GraphQl";
+import { ScreenContext } from "../screen/screen.provider";
+import { getActiveMenuItemState } from "./navbar.utils";
+
+export const NavbarContext = createContext({
+  portfolioDivRef: null,
+  navbarActive: false,
+  setNavbarActive: () => {},
+  activeMenuItem: {},
+  setActiveMenuItem: () => {},
+});
+
+const NavbarProvider = ({ children }) => {
+
+  const [menu, setMenu] = useState([]);
+
+  const { data } = useQuery("menu", getMenu);
+
+  /* 
       activeMenuItem: {
         home: true\false;
         about: false\true;
@@ -32,54 +34,53 @@ import React, {
         skills;
       }
     */
-    const [activeMenuItem, setActiveMenuItem] = useState({});
-  
-    //state to toggle navbar
-    const [navbarActive, setNavbarActive] = useState(false);
-  
-    //ref for portfolio div
-    const portfolioDivRef = useRef(null);
-  
-    //changes whenever screen resizes
-    const { screenWidth } = useContext(ScreenContext);
-  
-    //This is used only to stop linting from showing missing dependency
-    const initialScreenWidthRef = useRef(false);
-  
-  
-    //this renders 1st time only as menu never changes
-    //and initialScreenWidthRef prevents additional rendering
-    useEffect(() => {
-  
-      if (!initialScreenWidthRef.current) {
-        let initialActiveItem;
-  
-        if (screenWidth >= 1121) {
-          initialActiveItem = "about";
-        } else {
-          initialActiveItem = "home";
-        }
-        setActiveMenuItem(getActiveMenuItemState(menu, initialActiveItem));
-        initialScreenWidthRef.current = true;
+  const [activeMenuItem, setActiveMenuItem] = useState({});
+
+  //This is used to stop useEffect from rendering after activeMenuItem is fetched
+  const [activeMenuItemFetched, setActiveMenuItemFetched] = useState(false);
+
+  const [navbarActive, setNavbarActive] = useState(false);
+
+  const portfolioDivRef = useRef(null);
+
+  const { screenWidth } = useContext(ScreenContext);
+
+  useEffect(() => {
+    if (data && data[0].node) {
+      setMenu(data[0].node.links);
+    }
+  }, [data]);
+
+
+  useEffect(() => {
+    
+    if (!activeMenuItemFetched) {
+      let initialActiveItem;
+
+      if (screenWidth >= 1121) {
+        initialActiveItem = "about";
+      } else {
+        initialActiveItem = "home";
       }
-  
-    }, [menu, screenWidth]);
-  
-    return (
-      <NavbarContext.Provider
-        value={{
-          menu,
-          portfolioDivRef,
-          navbarActive,
-          setNavbarActive,
-          activeMenuItem,
-          setActiveMenuItem,
-        }}
-      >
-        {children}
-      </NavbarContext.Provider>
-    );
-  };
-  
-  export default NavbarProvider;
-  
+      setActiveMenuItem(getActiveMenuItemState(menu, initialActiveItem));
+      
+      if(JSON.stringify(activeMenuItem) !== '{}') setActiveMenuItemFetched(true);
+    }
+  }, [menu, screenWidth, activeMenuItemFetched, activeMenuItem]);
+
+  return (
+    <NavbarContext.Provider
+      value={{
+        portfolioDivRef,
+        navbarActive,
+        setNavbarActive,
+        activeMenuItem,
+        setActiveMenuItem,
+      }}
+    >
+      {children}
+    </NavbarContext.Provider>
+  );
+};
+
+export default NavbarProvider;

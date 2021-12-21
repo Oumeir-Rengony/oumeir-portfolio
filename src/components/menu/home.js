@@ -1,25 +1,32 @@
-import { useContext} from "react";
+import { useRef} from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
-import { ScreenContext } from "../../context/screen/screen.provider";
-import { getHomeData } from "../../data";
+import { getHomeSection } from "../../GraphQl";
 import Typing from "../animation/typing";
 import WaveAnimation from "../animation/wave";
 
 const Home = () => {
-  const { name, banner, designation } = getHomeData();
 
-  const {homeBannerRef, homeBannerWidth} = useContext(ScreenContext);
+  const { data, isLoading } = useQuery("home", getHomeSection);
+  
+  const homeBannerRef = useRef(null);
+  
+  if(isLoading){
+    return <></>;
+  }
+  
+  const {firstname, lastname, designation, profilePicture } = data;
 
   return (
-    <StyledWrapper homeBannerWidth={homeBannerWidth}>
+    <StyledWrapper homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
-        <img id="hero-banner" src={banner} alt="profile" />
+        <img id="hero-banner" src={profilePicture.url} alt="profile" />
         <div className="triangle" />
       </div>
       <div className="user-info">
         <div className="user-name">
-          <p className="fname">{name.firstname}</p>
-          <p className="lname">{name.lastname}</p>
+          <p className="fname">{firstname}</p>
+          <p className="lname">{lastname}</p>
         </div>
         <div className="designation">
           <Typing designation={designation} />
@@ -77,10 +84,10 @@ const StyledWrapper = styled.section`
       left: 0;
       width: 100%;
       height: 0;
-      border-left: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
+      /* border-left: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
       border-right: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
       border-top: ${(props) => `${props.homeBannerWidth / 6}px`} solid transparent;
-      border-bottom: 0;
+      border-bottom: 0; */
     }
   }
 

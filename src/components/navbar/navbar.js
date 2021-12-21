@@ -1,11 +1,17 @@
 import { useContext } from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
+import { getMenu } from "../../GraphQl";
 import NavLink from "./navlink";
 
 const Navbar = () => {
+  const { data, isLoading } = useQuery("menu", getMenu);
 
-  const { menu, navbarActive, setNavbarActive } = useContext(NavbarContext);
+  const { navbarActive, setNavbarActive } = useContext(NavbarContext);
+
+
+  if(isLoading) return <div>...loading</div>;
 
   return (
     <StyledWrapper>
@@ -17,12 +23,12 @@ const Navbar = () => {
       </div>
       <div className={`menu ${navbarActive && "active"}`}>
         <ul>
-          {menu.items.map(({ title, url, icon }, index) => (
+          { data[0].node.links.map(({ title, url, iconClass }, index) => (
             <NavLink
               key={index}
               title={title}
               url={url}
-              icon={icon}
+              icon={iconClass}
               index={index}
             />
           ))}
