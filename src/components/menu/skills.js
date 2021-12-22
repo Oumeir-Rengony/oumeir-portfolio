@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
-import { useContext } from "react";
 import { getSkillSection } from "../../GraphQl";
 import { useQuery } from "react-query";
 
 const Skills = () => {
   const { data, isLoading } = useQuery("skill", getSkillSection);
-
-  const { activeMenuItem } = useContext(NavbarContext);
 
   if (isLoading) {
     return <></>;
@@ -18,7 +14,7 @@ const Skills = () => {
   const { title, skillItems } = data;
 
   return (
-    <MenuContainer target={title} activeMenuItem={activeMenuItem.skills}>
+    <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} alt="logo" />
         <div className="skills">

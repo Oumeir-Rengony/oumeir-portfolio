@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { getContactSection } from "../../GraphQl";
 import { useQuery } from "react-query";
 
@@ -11,7 +10,6 @@ const Contact = () => {
 
   const [inputState, setInputState] = useState(null);
 
-  const { activeMenuItem } = useContext(NavbarContext);
 
   if (isLoading) {
     return <></>;
@@ -20,7 +18,7 @@ const Contact = () => {
   const { title, header, message, inputArea } = data;
 
   return (
-    <MenuContainer target={title} activeMenuItem={activeMenuItem.contact}>
+    <MenuContainer target={title}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="contact">

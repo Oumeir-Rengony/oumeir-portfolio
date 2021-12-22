@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
-import { useContext } from "react";
 import { useQuery } from "react-query";
 import { getResumeSection } from "../../GraphQl";
 
@@ -10,9 +8,6 @@ const Resume = () => {
   // const { title, items } = getResume();
 
   const { data, isLoading } = useQuery("resume", getResumeSection);  
-  
-  const {activeMenuItem} = useContext(NavbarContext);
-
 
   if(isLoading){
     return <></>;
@@ -21,7 +16,7 @@ const Resume = () => {
   const {title, resumeItems } = data;
   
   return (
-    <MenuContainer target={title} activeMenuItem={activeMenuItem.resume}>
+    <MenuContainer target={title}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="resume-container">

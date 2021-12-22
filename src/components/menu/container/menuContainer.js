@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { NavbarContext } from "../../../context/navbar/navbar.provider";
 
 
-const MenuContainer = ({ target, activeMenuItem, children }) => {
+const MenuContainer = ({ target, children }) => {
+
+  const { activeMenuItem } = useContext(NavbarContext);
+
   return (
-    <StyledWrapper id={target.toLowerCase()} activeMenuItem={activeMenuItem}>
+    <StyledWrapper id={target.toLowerCase()} activeMenuItem={activeMenuItem[target.toLowerCase()]}>
       {children}
     </StyledWrapper>
   );

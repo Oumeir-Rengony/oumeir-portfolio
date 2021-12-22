@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { useContext } from "react";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { getAboutSection } from "../../GraphQl";
 import { useQuery } from "react-query";
 
 const About = () => {
   const { data, isLoading } = useQuery("about", getAboutSection);
-
-  const { activeMenuItem } = useContext(NavbarContext);
 
   const calculateAge = (dob) => {
     var year = Number(dob.substr(0, 4));
@@ -33,7 +29,7 @@ const About = () => {
   const { title, introHeader, introText, bios } = data;
 
   return (
-    <MenuContainer target={title} activeMenuItem={activeMenuItem.about}>
+    <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <p className="small-bio">

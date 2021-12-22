@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { useContext } from "react";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { useQuery } from "react-query";
 import { getProjectSection } from "../../GraphQl";
 
 const Project = () => {
   const { data, isLoading } = useQuery("project", getProjectSection);
-  
-  const {activeMenuItem} = useContext(NavbarContext);
-  
+    
   const openWebsite = (website) => {
     window.open(website, "_blank");
   };
@@ -22,7 +18,7 @@ const Project = () => {
   const {title, projectItems} = data;
 
   return (
-    <MenuContainer target={title} activeMenuItem={activeMenuItem.projects}>
+    <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <div className="projects">
