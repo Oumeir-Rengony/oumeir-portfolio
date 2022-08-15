@@ -7,8 +7,10 @@ const MenuContainer = ({ target, children }) => {
 
   const { activeMenuItem } = useContext(NavbarContext);
 
+  const classes = activeMenuItem[target.toLowerCase()] ? "show" : "hide";
+
   return (
-    <StyledWrapper id={target.toLowerCase()} activeMenuItem={activeMenuItem[target.toLowerCase()]}>
+    <StyledWrapper id={target.toLowerCase()} className={classes}>
       {children}
     </StyledWrapper>
   );
@@ -33,18 +35,18 @@ const StyledWrapper = styled.section`
     overflow: auto;
     transition: transform 0.7s ease-out, opacity 0.5s ease-out;
 
-    ${(props) =>
-      !props.activeMenuItem
-        ? `
+    &.show {
+      transform: translateX(0%); 
+    }
+
+    &.hide {
       position: absolute;
       left:0;
       opacity:0.8;
       transform: translateX(-100%);
       z-index:1;
-    `
-        : `
-        transform: translateX(0%);
-    `}
+    }
+
   }
 
   @media (min-width: 1440px) {
