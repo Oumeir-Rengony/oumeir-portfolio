@@ -28,6 +28,7 @@ export const getHomeSection = async () => {
   const query = gql`
     query GetHomeSection {
       home(where: { id: "ckxemp2rc1pjm0f42ezzn779i" }) {
+        title
         firstname
         lastname
         publishedAt

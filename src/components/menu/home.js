@@ -15,10 +15,10 @@ const Home = () => {
     return <></>;
   }
   
-  const {firstname, lastname, designation, profilePicture } = data;
+  const {title, firstname, lastname, designation, profilePicture } = data;
 
   return (
-    <StyledWrapper homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
+    <StyledWrapper id={title.toLowerCase()} homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
         <img id="hero-banner" src={profilePicture.url} alt="profile" />
         <div className="triangle" />
