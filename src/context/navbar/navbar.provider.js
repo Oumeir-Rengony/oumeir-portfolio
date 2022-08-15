@@ -1,13 +1,12 @@
 import React, {
   createContext,
-  useContext,
   useEffect,
   useRef,
   useState,
 } from "react";
 import { useQuery } from "react-query";
+import useWindowSize from "../../components/hook/useWindowSize";
 import { getMenu } from "../../GraphQl";
-import { ScreenContext } from "../screen/screen.provider";
 import { getActiveMenuItemState } from "./navbar.utils";
 
 export const NavbarContext = createContext({
@@ -39,11 +38,11 @@ const NavbarProvider = ({ children }) => {
   //This is used to stop useEffect from rendering after activeMenuItem is fetched
   const [activeMenuItemFetched, setActiveMenuItemFetched] = useState(false);
 
-  const [navbarActive, setNavbarActive] = useState(false);
+  const [navbarActive, setNavbarActive] = useState(true);
 
   const portfolioDivRef = useRef(null);
 
-  const { screenWidth } = useContext(ScreenContext);
+  const { screenWidth } = useWindowSize();
 
   useEffect(() => {
     if (data && data[0].node) {
