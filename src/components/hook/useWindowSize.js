@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 
 const useWindowSize = () => {
   const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth || 0,
-    height: window.innerHeight || 0
+    screenWidth: window.innerWidth || 0,
+    screenHeight: window.innerHeight || 0
   });
 
 
   useEffect(() => {
     const handleResize = () => {
       setScreenSize({
-        width: window.innerWidth,
-        height: window.innerHeight
+        screenWidth: window.innerWidth,
+        screenHeight: window.innerHeight
       });
     };
 
