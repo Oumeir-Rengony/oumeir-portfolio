@@ -4,11 +4,41 @@ import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
 import { getContactSection } from "../../GraphQl";
 import { useQuery } from "react-query";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { data, isLoading } = useQuery("contact", getContactSection);
 
   const [inputState, setInputState] = useState(null);
+
+  const sendEmail = async(e) => {
+    e.preventDefault();
+
+    const templateParams = {
+      sender: inputState.name,
+      email: inputState.email,
+      message: inputState.message
+    };
+    console.log(inputState);
+
+    try {
+      const emailResponse = await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
+        templateParams, 
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      if(emailResponse.status === 200) {
+        setInputState(null);
+        console.log(emailResponse.text);
+      }
+
+    }catch(error){
+      console.log(error);
+    }
+    
+  }
 
 
   if (isLoading) {
@@ -33,29 +63,29 @@ const Contact = () => {
                 <input
                   key={index}
                   type="text"
-                  value={inputState !== null ? inputState[item] : ""}
-                  name={item}
+                  value={inputState !== null ? inputState[item.toLowerCase()] : ""}
+                  name={item.toLowerCase()}
                   className="contact-input"
                   placeholder={item}
                   onChange={(e) =>
-                    setInputState({ ...inputState, [item]: e.target.value })
+                    setInputState({ ...inputState, [item.toLowerCase()]: e.target.value })
                   }
                 />
               ) : (
                 <textarea
                   key={index}
                   type="text"
-                  name={item}
+                  name={item.toLowerCase()}
                   className="contact-input message"
-                  value={inputState !== null ? inputState[item] : ""}
+                  value={inputState !== null ? inputState[item.toLowerCase()] : ""}
                   placeholder={item}
                   onChange={(e) =>
-                    setInputState({ ...inputState, [item]: e.target.value })
+                    setInputState({ ...inputState, [item.toLowerCase()]: e.target.value })
                   }
                 />
               )
             )}
-            <button className="send">Send</button>
+            <button className="send" onClick={sendEmail}>Send</button>
           </form>
         </div>
       </StyledWrapper>
