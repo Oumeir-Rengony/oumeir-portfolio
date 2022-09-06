@@ -19,8 +19,6 @@ export const NavbarContext = createContext({
 
 const NavbarProvider = ({ children }) => {
 
-  const [menu, setMenu] = useState([]);
-
   const { data } = useQuery("menu", getMenu);
 
   /* 
@@ -34,38 +32,23 @@ const NavbarProvider = ({ children }) => {
       }
     */
   const [activeMenuItem, setActiveMenuItem] = useState({});
-
-  //This is used to stop useEffect from rendering after activeMenuItem is fetched
-  const [activeMenuItemFetched, setActiveMenuItemFetched] = useState(false);
-
   const [navbarActive, setNavbarActive] = useState(true);
-
   const portfolioDivRef = useRef(null);
 
   const { screenWidth } = useWindowSize();
 
-  useEffect(() => {
-    if (data && data[0].node) {
-      setMenu(data[0].node.links);
-    }
-  }, [data]);
-
+  useEffect(()=> {
+    console.log(activeMenuItem);
+  }, [activeMenuItem])
 
   useEffect(() => {
-    
-    if (!activeMenuItemFetched) {
-      let initialActiveItem;
-
-      if (screenWidth >= 1121) {
-        initialActiveItem = "about";
-      } else {
-        initialActiveItem = "home";
-      }
-      setActiveMenuItem(getActiveMenuItemState(menu, initialActiveItem));
-      
-      if(JSON.stringify(activeMenuItem) !== '{}') setActiveMenuItemFetched(true);
+    if (data && data[0].node && screenWidth) {
+      const menu = data[0].node.links;
+      const initialActiveItem = screenWidth >= 1121 ? "about" : "home";
+      const activeMenu = getActiveMenuItemState(menu, initialActiveItem);
+      setActiveMenuItem(activeMenu);
     }
-  }, [menu, screenWidth, activeMenuItemFetched, activeMenuItem]);
+  }, [data, screenWidth]);
 
   return (
     <NavbarContext.Provider
