@@ -1,46 +1,21 @@
-import { useContext } from "react";
 import styled from "styled-components";
-import { NavbarContext } from "../../context/navbar/navbar.provider";
-import { getUpdatedActiveMenuItemState } from "../../context/navbar/navbar.utils";
 
-const NavLink = ({ title, url, icon, index }) => {
-  const {
-    activeMenuItem,
-    portfolioDivRef,
-    setActiveMenuItem,
-    setNavbarActive,
-  } = useContext(NavbarContext);
-
-
-  //display active menu item
-  const showSection = (e) => {
-    setNavbarActive((prev) => !prev);
-    setActiveMenuItem((prev) => getUpdatedActiveMenuItemState(prev, title));
-
-    //if home is clicked
-    if (index === 0) {
-      window.scrollTo(0, 0);
-      portfolioDivRef.current.scrollTo(0, 0);
-    }
-    
-    return;
-  };
+const NavLink = ({ title, url, icon, index, showSection, activeNavLink }) => {
 
   return (
-    <StyledNavLink href={url} onClick={showSection}>
-      <li>
-        <span className={`icon ${icon} ${activeMenuItem[title] && "active"}`} />
+    <StyledNavLink onClick={() => showSection(title, index)}>
+      <a className={`${activeNavLink(title) ? "active" : ''}`} href={url}>
+        <span className={`icon ${icon}`} />
         <br />
-        <span className={`title ${activeMenuItem[title] && "active"}`}>
+        <span className="title">
           {title}
         </span>
-      </li>
+      </a>
     </StyledNavLink>
   );
 };
 
-const StyledNavLink = styled.a`
-  text-decoration: none;
+const StyledNavLink = styled.li`
 
   &:first-child {
     @media (min-width: 1121px) {
@@ -68,12 +43,25 @@ const StyledNavLink = styled.a`
     }
   }
 
-  li {
+  a {
+    display: block;
+    text-decoration: none;
     width: 100%;
     height: 62px;
     position: relative;
     text-align: center;
     color: #5e6363;
+
+    &.active {
+      color: #78cc6d;
+    }
+
+    @media(min-width:992px){
+      :hover {
+        color: #78cc6d;
+      }
+    }
+
 
     &:before {
       content: "";
@@ -90,10 +78,6 @@ const StyledNavLink = styled.a`
       );
     }
 
-    &:hover {
-      color: #78cc6d;
-    }
-
     .icon {
       font-size: 24px;
     }
@@ -104,10 +88,6 @@ const StyledNavLink = styled.a`
       @media (min-width: 681px) {
         font-size: 14px;
       }
-    }
-
-    .active {
-      color: #78cc6d;
     }
   }
 `;

@@ -37,10 +37,6 @@ const NavbarProvider = ({ children }) => {
 
   const { screenWidth } = useWindowSize();
 
-  useEffect(()=> {
-    console.log(activeMenuItem);
-  }, [activeMenuItem])
-
   useEffect(() => {
     if (data && data[0].node && screenWidth) {
       const menu = data[0].node.links;

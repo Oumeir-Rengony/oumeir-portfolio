@@ -3,15 +3,38 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
 import { getMenu } from "../../GraphQl";
+import { getUpdatedActiveMenuItemState } from "../../context/navbar/navbar.utils";
 import NavLink from "./navlink";
 
 const Navbar = () => {
   const { data, isLoading } = useQuery("menu", getMenu);
 
-  const { navbarActive, setNavbarActive } = useContext(NavbarContext);
+  const {
+    portfolioDivRef,
+    setActiveMenuItem,
+    activeMenuItem,
+    navbarActive,
+    setNavbarActive,
+  } = useContext(NavbarContext);
 
 
   if(isLoading) return <div>...loading</div>;
+
+  //display active menu item
+  const showSection = (title, index) => {
+    setNavbarActive((prev) => !prev);
+    setActiveMenuItem((prev) => getUpdatedActiveMenuItemState(prev, title));
+
+    //if home is clicked (for mobile)
+    if (index === 0) {
+      window.scrollTo(0, 0);
+      portfolioDivRef.current.scrollTo(0, 0);
+    }
+    
+    return;
+  };
+
+  const activeNavLink = (title) =>  activeMenuItem[title] ? true : false;
 
   return (
     <StyledWrapper>
@@ -21,7 +44,7 @@ const Navbar = () => {
       >
         <span className="line"></span>
       </div>
-      <div className={`menu ${navbarActive && "active"}`}>
+      <div className={`menu ${navbarActive ? "active" : ''}`}>
         <ul>
           { data[0].node.links.map(({ title, url, iconClass }, index) => (
             <NavLink
@@ -30,6 +53,8 @@ const Navbar = () => {
               url={url}
               icon={iconClass}
               index={index}
+              showSection={showSection}
+              activeNavLink={activeNavLink}
             />
           ))}
         </ul>
