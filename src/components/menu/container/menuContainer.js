@@ -1,16 +1,24 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import styled from "styled-components";
 import { NavbarContext } from "../../../context/navbar/navbar.provider";
 
 
 const MenuContainer = ({ target, children }) => {
 
+
+  const ref = useRef(null);
+
   const { activeMenuItem } = useContext(NavbarContext);
+
+  if(activeMenuItem[target.toLowerCase()]) {
+    console.log(activeMenuItem);
+    ref?.current?.scrollIntoView({behavior: 'smooth'}, true);
+  }
 
   const classes = activeMenuItem[target.toLowerCase()] ? "show" : "hide";
 
   return (
-    <StyledWrapper id={target.toLowerCase()} className={classes}>
+    <StyledWrapper id={target.toLowerCase()} className={classes} ref={ref}>
       {children}
     </StyledWrapper>
   );

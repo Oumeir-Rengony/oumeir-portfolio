@@ -38,13 +38,24 @@ const NavbarProvider = ({ children }) => {
   const { screenWidth } = useWindowSize();
 
   useEffect(() => {
-    if (data && data[0].node && screenWidth) {
+    if (data && data[0].node) {
       const menu = data[0].node.links;
-      const initialActiveItem = screenWidth >= 1121 ? "about" : "home";
+      const initialActiveItem = window.innerWidth >= 1121 ? "about" : "home";
       const activeMenu = getActiveMenuItemState(menu, initialActiveItem);
       setActiveMenuItem(activeMenu);
     }
-  }, [data, screenWidth]);
+  }, [data]);
+
+
+  useEffect(() => {
+    //only for large screen since small screen has home whereas large screen does not.
+    if(screenWidth >= 1121) {
+      setActiveMenuItem(prev => prev.home ? 
+        {...prev, home:false, about:true}: prev
+      )
+    }
+    
+  }, [screenWidth])
 
   return (
     <NavbarContext.Provider

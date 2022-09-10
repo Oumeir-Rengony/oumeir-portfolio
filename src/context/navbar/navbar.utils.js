@@ -15,12 +15,12 @@ export const getActiveMenuItemState = (links, initialActiveItem) => {
 
   /*
       activeMenuItem: {
-        about: true;
-        contact: false;
-        home: false;
-        projects: false;
-        resume: false;
-        skills;
+        about: true,
+        contact: false,
+        home: false,
+        projects: false,
+        resume: false,
+        skills: false
       }
     */
   return activeMenuItemObject;
