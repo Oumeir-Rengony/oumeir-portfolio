@@ -64,6 +64,7 @@ const Navbar = () => {
 };
 
 const StyledWrapper = styled.header`
+  display: none;
   position: fixed;
   width: 72px;
   top: 2px;
@@ -78,10 +79,7 @@ const StyledWrapper = styled.header`
   }
 
   @media (min-width: 1121px) {
-    margin: 26px 0;
-  }
-
-  @media (min-width: 1121px) {
+    display: block;
     margin: 36px 0;
   }
 
