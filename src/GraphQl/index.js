@@ -37,6 +37,9 @@ export const getHomeSection = async () => {
         profilePicture {
           url
         }
+        profile {
+          url
+        }
       }
     }
   `;

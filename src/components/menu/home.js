@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { getHomeSection } from "../../GraphQl";
 import Typing from "../animation/typing";
 import WaveAnimation from "../animation/wave";
+import Carousel from "../carousel/carousel";
 
 const Home = () => {
 
@@ -15,13 +16,12 @@ const Home = () => {
     return <></>;
   }
   
-  const {title, firstname, lastname, designation, profilePicture } = data;
+  const {title, firstname, lastname, designation, profilePicture, profile} = data;
 
   return (
     <StyledWrapper id={title.toLowerCase()} homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
-        <img id="hero-banner" src={profilePicture.url} alt="profile" />
-        <div className="triangle" />
+        <Carousel images={profile}/>
       </div>
       <div className="user-info">
         <div className="user-name">
@@ -65,29 +65,12 @@ const StyledWrapper = styled.section`
     width: 100%;
     height: 63%;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-
-      @media (min-width: 681px) {
-        border-radius: 10px;
-      }
-      @media (min-width: 1121px) {
-        border-radius: 6px;
-      }
-    }
-
     .triangle {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 0;
-      /* border-left: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
-      border-right: ${(props) => `${props.homeBannerWidth / 2}px`} solid #9452fe;
-      border-top: ${(props) => `${props.homeBannerWidth / 6}px`} solid transparent;
-      border-bottom: 0; */
     }
   }
 
