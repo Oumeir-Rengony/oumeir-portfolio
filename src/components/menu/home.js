@@ -43,7 +43,7 @@ const StyledWrapper = styled.section`
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: #96aeca;
+  background: #E9E9E9;
 
   @media (min-width: 681px) {
     height: 98%;

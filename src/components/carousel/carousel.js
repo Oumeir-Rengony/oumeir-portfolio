@@ -9,7 +9,7 @@ const Carousel = ({ images }) => {
         <CarouselProvider
             naturalSlideWidth={100}
             naturalSlideHeight={105}
-            totalSlides={3}
+            totalSlides={images.length}
         >
             <Slider>
                 {
@@ -41,6 +41,10 @@ const StyledWrapper = styled.div`
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            @media(min-width: 768px) {
+                transform: scale(0.95);
+            }
 
             @media (min-width: 681px) {
                 border-radius: 10px;
