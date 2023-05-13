@@ -16,12 +16,13 @@ const Home = () => {
     return <></>;
   }
   
-  const {title, firstname, lastname, designation, profilePicture, profile} = data;
+  const {title, firstname, lastname, designation, publicProfile, hiddenProfile} = data;
+
 
   return (
     <StyledWrapper id={title.toLowerCase()} homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
-        <Carousel images={profile}/>
+        <Carousel images={hiddenProfile} publicProfile={publicProfile}/>
       </div>
       <div className="user-info">
         <div className="user-name">

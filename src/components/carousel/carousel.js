@@ -2,31 +2,50 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, DotGroup} from 'pure-react-carousel';
 import styled from "styled-components";
 
-const Carousel = ({ images }) => {
+const Carousel = ({ images, publicProfile }) => {
 
+  var urlParams = new URLSearchParams(window.location.search);
+  var show = urlParams.get('show');
+ 
+  
   return (
     <StyledWrapper>
-        <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={105}
-            totalSlides={images.length}
-        >
-            <Slider>
-                {
-                    images.map((item, index) => (
-                        <Slide index={index}>
-                            <img src={item.url} alt="profile picture" />
-                        </Slide>
-                    ))
-                }
-            </Slider>
-            <DotGroup/>
-        </CarouselProvider>
+        {
+            show?.toLowerCase() !== "oumeir" 
+                ? <img src={publicProfile.url} alt="black profile picture" className="public-profile"/>
+                : (
+                    <CarouselProvider
+                        naturalSlideWidth={100}
+                        naturalSlideHeight={105}
+                        totalSlides={images.length}
+                    >
+                        <Slider>
+                            {
+                                images.map((item, index) => (
+                                        <Slide index={index}>
+                                            <img src={item.url} alt="profile picture" />
+                                        </Slide>
+                                    ))
+                            }          
+                        </Slider>
+                        <DotGroup/>
+                    </CarouselProvider>
+                )
+        }
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
+
+width: 100%;
+height: 100%;
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .carousel {
 
@@ -38,10 +57,6 @@ const StyledWrapper = styled.div`
         }
         
         img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
             @media(min-width: 768px) {
                 transform: scale(0.95);
             }

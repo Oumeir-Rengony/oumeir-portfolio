@@ -34,10 +34,10 @@ export const getHomeSection = async () => {
         publishedAt
         designation
         quote
-        profilePicture {
+        publicProfile {
           url
         }
-        profile {
+        hiddenProfile {
           url
         }
       }
