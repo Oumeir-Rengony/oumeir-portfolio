@@ -16,13 +16,15 @@ const Home = () => {
     return <></>;
   }
   
-  const {title, firstname, lastname, designation, publicProfile, hiddenProfile} = data;
+  const {title, firstname, lastname, designation, publicProfile, hiddenProfile, showQueryParams} = data;
 
+  var urlParams = new URLSearchParams(window.location.search);
+  var show = urlParams.get('show');
 
   return (
     <StyledWrapper id={title.toLowerCase()} homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
-        <Carousel images={hiddenProfile} publicProfile={publicProfile}/>
+        <Carousel images={hiddenProfile} publicProfile={publicProfile} showProfile={show === showQueryParams}/>
       </div>
       <div className="user-info">
         <div className="user-name">

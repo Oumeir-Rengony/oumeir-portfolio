@@ -34,6 +34,7 @@ export const getHomeSection = async () => {
         publishedAt
         designation
         quote
+        showQueryParams
         publicProfile {
           url
         }

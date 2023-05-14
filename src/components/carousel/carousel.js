@@ -2,17 +2,15 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, DotGroup} from 'pure-react-carousel';
 import styled from "styled-components";
 
-const Carousel = ({ images, publicProfile }) => {
+const Carousel = ({ images, publicProfile, showProfile }) => {
 
-  var urlParams = new URLSearchParams(window.location.search);
-  var show = urlParams.get('show');
  
   
   return (
     <StyledWrapper>
         {
-            show?.toLowerCase() !== "oumeir" 
-                ? <img src={publicProfile.url} alt="black profile picture" className="public-profile"/>
+            !showProfile 
+                ? <img src={publicProfile.url} alt="tech" className="public-profile"/>
                 : (
                     <CarouselProvider
                         naturalSlideWidth={100}
@@ -23,7 +21,7 @@ const Carousel = ({ images, publicProfile }) => {
                             {
                                 images.map((item, index) => (
                                         <Slide index={index}>
-                                            <img src={item.url} alt="profile picture" />
+                                            <img src={item.url} alt="my profile" />
                                         </Slide>
                                     ))
                             }          
