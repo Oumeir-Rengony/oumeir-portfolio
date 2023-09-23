@@ -37,6 +37,7 @@ const BackgroundImg = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  margin: 0 auto;
 
   @media (min-width: 425px) {
     width: 64px;
@@ -50,53 +51,24 @@ const BackgroundImg = styled.div`
 `;
 
 const StyledWrapper = styled.section`
+
   .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr)); 
+    gap: 20px 10px;
     padding-top: 30px;
-    text-align: center;
 
-    @media (min-width: 564px) {
-      text-align: start;
-    }
-
-    @media (min-width: 600px) {
-      text-align: center;
-    }
-
-    @media (min-width: 660px) {
-      text-align: start;
-    }
-
-    @media (min-width: 1224px) {
-      padding: 30px 30px;
+    @media(min-width: 1280px){
+      gap: 20px 0px;
     }
 
     .logo-container {
-      display: inline-block;
-      margin: 6px 12px;
+      margin: 0 auto;
       text-align: center;
-
-      @media (min-width: 375px) {
-        margin: 6px 18px;
-      }
-
-      @media (min-width: 425px) {
-        margin: 8px 28px;
-      }
-
-      @media (min-width: 600px) {
-        margin: 8px 40px;
-      }
-
-      @media (min-width: 1121px) {
-        margin: 12px 24px;
-      }
-
-      p {
-        font-size: 13px;
-        color: #646464;
-      }
+      font-size: 14px;
     }
   }
+
 `;
 
 export default Skills;
