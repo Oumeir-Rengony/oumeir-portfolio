@@ -149,6 +149,10 @@
           "image": "/images/skills/nextjs.png"
         },
         {
+          "title": "Graphql",
+          "image": "/images/skills/graphql.png"
+        },
+        {
           "title": "Css in Js",
           "image": "/images/skills/sc.png"
         },
