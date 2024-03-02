@@ -1,26 +1,20 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { getSkillSection } from "../../GraphQl";
-import { useQuery } from "react-query";
+import data from "../../data/data.json";
 
 const Skills = () => {
-  const { data, isLoading } = useQuery("skill", getSkillSection);
 
-  if (isLoading) {
-    return <></>;
-  }
-
-  const { title, skillItems } = data;
+  const { title, items } = data[0].skills;
 
   return (
     <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} alt="logo" />
         <div className="skills">
-          {skillItems.map(({ title, image }, index) => (
+          {items.map(({ title, image }, index) => (
             <div className="logo-container" key={index}>
-              <BackgroundImg src={image.url} />
+              <BackgroundImg src={image} />
               <p>{title}</p>
             </div>
           ))}

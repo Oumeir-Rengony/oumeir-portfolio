@@ -1,35 +1,31 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { useQuery } from "react-query";
-import { getProjectSection } from "../../GraphQl";
+import data from "../../data/data.json";
 
 const Project = () => {
-  const { data, isLoading } = useQuery("project", getProjectSection);
+
+  const { title, items} = data[0].projects;
     
   const openWebsite = (website) => {
     window.open(website, "_blank");
   };
   
-  if(isLoading){
-    return <></>;
-  }
 
-  const {title, projectItems} = data;
 
   return (
     <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <div className="projects">
-          {projectItems.map(({ title, website, image, description }, index) => (
+          {items.map(({ title, website, image, description }, index) => (
             <div
               className="project-item"
               key={index}
               onClick={() => openWebsite(website)}
             >
               <div className="logo-container">
-                <img src={image.url} alt="website logo" />
+                <img src={image} alt="website logo" />
               </div>
 
               <div className="text">
@@ -81,7 +77,6 @@ const StyledWrapper = styled.section`
         img {
           width: 100%;
           height: 100%;
-          background: rgb(222 222 222 / 50%);
           border-radius: 50%;
           transition: box-shadow 0.5s ease-out;
         }

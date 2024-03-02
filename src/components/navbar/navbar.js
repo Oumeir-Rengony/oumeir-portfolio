@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { useQuery } from "react-query";
 import styled from "styled-components";
 import { NavbarContext } from "../../context/navbar/navbar.provider";
-import { getMenu } from "../../GraphQl";
 import { getUpdatedActiveMenuItemState } from "../../context/navbar/navbar.utils";
 import NavLink from "./navlink";
+import data from "../../data/data.json";
 
 const Navbar = () => {
-  const { data, isLoading } = useQuery("menu", getMenu);
+
+  const { items } = data[0].menu;
 
   const {
     portfolioDivRef,
@@ -18,7 +18,6 @@ const Navbar = () => {
   } = useContext(NavbarContext);
 
 
-  if(isLoading) return <div>...loading</div>;
 
   //display active menu item
   const showSection = (title, index) => {
@@ -46,12 +45,12 @@ const Navbar = () => {
       </div>
       <div className={`menu ${navbarActive ? "active" : ''}`}>
         <ul>
-          { data[0].node.links.map(({ title, url, iconClass }, index) => (
+          { items.map(({ title, url, icon }, index) => (
             <NavLink
               key={index}
               title={title}
               url={url}
-              icon={iconClass}
+              icon={icon}
               index={index}
               showSection={showSection}
               activeNavLink={activeNavLink}

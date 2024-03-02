@@ -1,41 +1,48 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { getAboutSection } from "../../GraphQl";
-import { useQuery } from "react-query";
+import data from "../../data/data.json";
 
 const About = () => {
-  const { data, isLoading } = useQuery("about", getAboutSection);
+
+  const { 
+    title, 
+    intro,
+    bios 
+  } = data[0].about;
+
 
   const calculateAge = (dob) => {
-    var year = Number(dob.substr(0, 4));
-    var month = Number(dob.substr(4, 2)) - 1;
-    var day = Number(dob.substr(6, 2));
+
+    const date = new Date(dob);
+    var year = Number(date.getFullYear());
+    console.log(date, year)
+    var month = Number(date.getMonth());
+    var day = Number(date.getDay());
+
     var today = new Date();
-    var age = today.getFullYear() - year;
-    if (
-      today.getMonth() < month ||
-      (today.getMonth() === month && today.getDate() < day)
-    ) {
+    var currentDate = Number(today.getDay());
+    var currentMonth = Number(today.getMonth());
+    var currentYear = Number(today.getFullYear());
+    var age = currentYear - year;
+
+    // console.log(currentYear, year)
+
+    if (currentMonth < month || (currentMonth === month && currentDate) < day){
       age--;
     }
     return age;
   };
 
-  if (isLoading) {
-    return <></>;
-  }
-
-  const { title, introHeader, introText, bios } = data;
 
   return (
     <MenuContainer target={title}>
       <StyledWrapper>
         <SectionHeader title={title} />
         <p className="small-bio">
-          <strong>{introHeader}</strong>
+          <strong>{intro?.title}</strong>
           <br />
-          <span>{introText}</span>
+          <span>{intro?.paragraph}</span>
         </p>
 
         <div className="info-list">

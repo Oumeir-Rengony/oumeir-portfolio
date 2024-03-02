@@ -1,30 +1,32 @@
 import { useRef} from "react";
-import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getHomeSection } from "../../GraphQl";
 import Typing from "../animation/typing";
 import WaveAnimation from "../animation/wave";
-import Carousel from "../carousel/carousel";
+
+import data from "../../data/data.json";
 
 const Home = () => {
 
-  const { data, isLoading } = useQuery("home", getHomeSection);
+  const {
+    title, 
+    firstname, 
+    lastname, 
+    designation, 
+    publicProfile,
+    privateProfile, 
+    showQueryParams
+  } = data[0].home;
   
   const homeBannerRef = useRef(null);
   
-  if(isLoading){
-    return <></>;
-  }
   
-  const {title, firstname, lastname, designation, publicProfile, hiddenProfile, showQueryParams} = data;
-
   var urlParams = new URLSearchParams(window.location.search);
   var show = urlParams.get('show');
 
   return (
     <StyledWrapper id={title.toLowerCase()} homeBannerWidth={!homeBannerRef.current ? 0 : homeBannerRef.current.clientWidth}>
       <div className="profile" ref={homeBannerRef}>
-        <Carousel images={hiddenProfile} publicProfile={publicProfile} showProfile={show === showQueryParams}/>
+        <img src={show !== showQueryParams ? publicProfile : privateProfile} alt="tech" className="public-profile"/>
       </div>
       <div className="user-info">
         <div className="user-name">
@@ -67,6 +69,12 @@ const StyledWrapper = styled.section`
     position: relative;
     width: 100%;
     height: 63%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .triangle {
       position: absolute;

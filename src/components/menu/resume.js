@@ -1,29 +1,22 @@
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { useQuery } from "react-query";
-import { getResumeSection } from "../../GraphQl";
+import data from "../../data/data.json";
 
 const Resume = () => {
-  // const { title, items } = getResume();
+    
+  const { title, items } = data[0].resume;
 
-  const { data, isLoading } = useQuery("resume", getResumeSection);  
-
-  if(isLoading){
-    return <></>;
-  }
-
-  const {title, resumeItems } = data;
   
   return (
     <MenuContainer target={title}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="resume-container">
-          {resumeItems.map(({ iconClass, title, timelines }, index) => (
+          {items.map(({ icon, title, timelines }, index) => (
             <div className="resume" key={index}>
               <div className="resume-header">
-                <i className={iconClass} aria-hidden="true"></i>
+                <i className={icon} aria-hidden="true"></i>
                 <h2 className="header-title">{title}</h2>
               </div>
               <div className="timeline">

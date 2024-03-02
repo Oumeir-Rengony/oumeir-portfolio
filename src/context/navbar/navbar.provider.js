@@ -4,10 +4,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useQuery } from "react-query";
 import useWindowSize from "../../components/hook/useWindowSize";
-import { getMenu } from "../../GraphQl";
 import { getActiveMenuItemState } from "./navbar.utils";
+import data from "../../data/data.json";
+
 
 export const NavbarContext = createContext({
   portfolioDivRef: null,
@@ -19,7 +19,6 @@ export const NavbarContext = createContext({
 
 const NavbarProvider = ({ children }) => {
 
-  const { data } = useQuery("menu", getMenu);
 
   /* 
       activeMenuItem: {
@@ -38,13 +37,13 @@ const NavbarProvider = ({ children }) => {
   const { screenWidth } = useWindowSize();
 
   useEffect(() => {
-    if (data && data[0].node) {
-      const menu = data[0].node.links;
+    if (data) {
+      const menu = data[0].menu.items;
       const initialActiveItem = window.innerWidth >= 1121 ? "about" : "home";
       const activeMenu = getActiveMenuItemState(menu, initialActiveItem);
       setActiveMenuItem(activeMenu);
     }
-  }, [data]);
+  }, []);
 
 
   useEffect(() => {

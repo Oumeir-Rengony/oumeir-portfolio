@@ -21,11 +21,11 @@
     },
     "home": {
       "title": "home",
-      "name": {
-        "firstname": "Mohammad Oumeir",
-        "lastname": "Rengony"
-      },
-      "banner": "https://bslthemes.site/ryancv/wp-content/uploads/2020/04/man5_big.jpg",
+      "firstname": "Mohammad Oumeir",
+      "lastname": "Rengony",
+      "showQueryParams": "yes",
+      "publicProfile": "/images/moon.jpeg",
+      "privateProfile": "/images/oumeir.png",
       "designation": [
         "Web Developer",
         "React Developer",
@@ -40,7 +40,7 @@
         "title": "Hello! I’m Oumeir Rengony.",
         "paragraph": "A passionate and Adventurous web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and JavaScript. I’m curious, and I enjoy work that challenges me to learn something new and stretch in a different direction."
       },
-      "bio": [
+      "bios": [
         {
           "attribute": "First Name",
           "value": "Mohammad Oumeir"
@@ -50,8 +50,12 @@
           "value": "Rengony"
         },
         {
+          "attribute": "Dob",
+          "value": "1998/05/17"
+        },
+        {
           "attribute": "Age",
-          "value": 24
+          "value": "1998/05/17"
         },
         {
           "attribute": "Address",
@@ -63,7 +67,7 @@
         },
         {
           "attribute": "Email",
-          "value": "rengonyoumeir@gmail.com"
+          "value": "oumeir.me@gmail.com"
         }
       ]
     },
@@ -73,7 +77,7 @@
         {
           "title": "Education",
           "icon": "fa fa-briefcase fa-2x",
-          "timeline": [
+          "timelines": [
             {
               "name": "Adolphe De Plevitz",
               "year": "2013 -2015",
@@ -94,7 +98,7 @@
         {
           "title": "Experience",
           "icon": "fa fa-book fa-2x",
-          "timeline": [
+          "timelines": [
             {
               "name": "Accenture",
               "year": "2019",
@@ -114,43 +118,43 @@
       "items": [
         {
           "title": "Html5",
-          "image": "/images/skills/html.svg"
+          "image": "/images/skills/html.png"
         },
         {
           "title": "Css3",
-          "image": "/images/skills/css.svg"
+          "image": "/images/skills/css3.png"
         },
         {
           "title": "Javascript",
-          "image": "/images/skills/javascript.svg"
+          "image": "/images/skills/js.png"
         },
         {
           "title": "Jquery",
-          "image": "/images/skills/jquery.svg"
+          "image": "/images/skills/jquery.png"
         },
         {
           "title": "Git",
-          "image": "/images/skills/git.svg"
+          "image": "/images/skills/git.png"
         },
         {
           "title": "React",
-          "image": "/images/skills/react.svg"
+          "image": "/images/skills/react.png"
         },
         {
           "title": "Typescript",
-          "image": "/images/skills/typescript.svg"
+          "image": "/images/skills/ts.png"
         },
         {
           "title": "NextJs",
-          "image": "/images/skills/next-js.png"
+          "image": "/images/skills/nextjs.png"
         },
         {
           "title": "Css in Js",
-          "image": "/images/skills/styled.png"
+          "image": "/images/skills/sc.png"
         },
         {
           "title": "AZ-900",
-          "image": "/images/skills/az-900.svg"
+          "image": "/images/skills/az900.png"
         }
       ]
     },
@@ -159,27 +163,21 @@
       "items": [  
         {
           "title": "Crown Clothing",
-          "website": "https://crwn-clothing-prod-build.herokuapp.com/",
-          "image": "/images/projects/crwn.svg",
+          "website": "https://crown-clothing.onrender.com/",
+          "image": "/images/projects/crown.png",
           "paragraph": "A simple ecommerce website using React Redux for state management and stripe for payment."
         },
         {
           "title": "TodoApp",
-          "website": "https://typescript-todoapp.herokuapp.com/",
-          "image": "/images/projects/note.jpg",
+          "website": "https://ts-todo.onrender.com/",
+          "image": "/images/projects/todo.png",
           "paragraph": "An elegant note taking app to showcase how typescript makes development easier."
         },
         {
-          "title": "Chargepoint",
-          "website": "https://chargepoint-nextjs-contentful.vercel.app/",
-          "image": "/images/projects/chargepoint.jpg",
-          "paragraph": "A statically generated website about electric charger using Next.js and contentful for content management."
-        },
-        {
-          "title": "Tic Tac Toe",
-          "website": "https://react-tictactoe-ui.herokuapp.com/",
-          "image": "/images/projects/tictactoe.png",
-          "paragraph": "A dual multiplyer tic-tac-toe game built using React and Socket.io, an advanced web socket api."
+          "title": "Ulama Moris",
+          "website": "https://ulama-moris.org",
+          "image": "/images/projects/ulama.png",
+          "paragraph": "A next.js App build using contentful as a cms with graphql query."
         }
       ]
     },
@@ -189,7 +187,7 @@
         "title": "I'd love to hear from you",
         "paragraph": "I'm open for any suggestion or just to have a chat. Please leave a lovely message for me."
       },
-      "input": ["Name", "Email", "Message"]
+      "inputArea": ["Name", "Email", "Message"]
     }
   }
 ]

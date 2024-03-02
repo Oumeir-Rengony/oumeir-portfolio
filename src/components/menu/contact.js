@@ -2,12 +2,17 @@ import { useState } from "react";
 import styled from "styled-components";
 import SectionHeader from "./sectionHeader/sectionHeader";
 import MenuContainer from "./container/menuContainer";
-import { getContactSection } from "../../GraphQl";
-import { useQuery } from "react-query";
 import emailjs from '@emailjs/browser';
+import data from "../../data/data.json";
 
 const Contact = () => {
-  const { data, isLoading } = useQuery("contact", getContactSection);
+
+  const { 
+    title, 
+    intro,
+    inputArea 
+  } = data[0].contact;
+
 
   const [inputState, setInputState] = useState(null);
 
@@ -19,7 +24,6 @@ const Contact = () => {
       email: inputState.email,
       message: inputState.message
     };
-    console.log(inputState);
 
     try {
       const emailResponse = await emailjs.send(
@@ -40,22 +44,15 @@ const Contact = () => {
     
   }
 
-
-  if (isLoading) {
-    return <></>;
-  }
-
-  const { title, header, message, inputArea } = data;
-
   return (
     <MenuContainer target={title}>
       <SectionHeader title={title} />
       <StyledWrapper>
         <div className="contact">
           <p className="small-bio">
-            <strong>{header}</strong>
+            <strong>{intro.title}</strong>
             <br />
-            {message}
+            {intro.paragraph}
           </p>
           <form className="contact-form">
             {inputArea.map((item, index) =>
